@@ -6,6 +6,5 @@ pickle
 plotly
 datetime
 numpy
-pickle
 json
 jellyfish
