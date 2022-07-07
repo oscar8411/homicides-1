@@ -54,5 +54,5 @@ def graficar(state_dropdown,start_date,end_date):
         mapbox_style="open-street-map",
         center={"lat": 8, "lon": -75},
         opacity=0.5 )
-    fig2.update_layout(title="US State Sales",margin={"r":0,"t":0,"l":0,"b":0}, paper_bgcolor="#F8F9F9", plot_bgcolor="#F8F9F9",)
+    fig2.update_layout()
     return fig2

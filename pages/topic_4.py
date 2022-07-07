@@ -7,13 +7,21 @@ from dash import dcc, html, Input, Output, callback
 from .side_bar import sidebar
 from app_dataframe import df_departamento,df_municipio
 
-register_page(__name__,name='homicides by zones')
+register_page(
+    __name__,
+    name='homicides by zones',
+    )
 
 lista = df_departamento.departamento.unique()
 
 def get_box_chart_departamento():
-    fig = px.violin(df_departamento, x='departamento', y='cantidad', box=True, title='BoxPlot Homicidios por departamento', color='departamento')
-    fig.update_layout(showlegend=False)
+    fig = px.violin(df_departamento, x='departamento', y='cantidad', box=True, color='departamento')
+    fig.update_layout(
+        showlegend=False,
+        title_text='BoxPlot Homicides per state',
+        xaxis_title='State',
+        yaxis_title='Homicides',
+        )
     fig.update_xaxes(tickangle=270)
     grafica = dcc.Graph(figure=fig, style={'width': '100%', 'height': '80vh', 'display': 'inline-block'})
     return grafica
@@ -21,6 +29,8 @@ def get_box_chart_departamento():
 def layout():
     return dbc.Row([
         dbc.Col(sidebar(), width=12), 
+        dbc.Col('', width=6),
+        dbc.Col('View:', width=6),
         dbc.Col('', width=6),
         dbc.Col(dcc.Checklist(id='checklist1',options=lista,value=lista), width=6),
         dbc.Col(get_box_chart_departamento(), width=6),
@@ -33,7 +43,12 @@ def layout():
 
 def get_box_chart_municipio(dpto):
     mask = df_municipio.departamento.isin(dpto)
-    fig = px.strip(df_municipio[mask],x='municipio', y='cantidad', title='StripPlot Homicidios por municipio', color='departamento')
-    fig.update_layout(showlegend=False)
+    fig = px.strip(df_municipio[mask],x='municipio', y='cantidad', color='departamento')
+    fig.update_layout(
+        showlegend=False,
+        title_text='StripPlot Homicides per borough',
+        xaxis_title='Borough',
+        yaxis_title='Homicides',
+        )
     fig.update_xaxes(tickangle=270)
     return fig

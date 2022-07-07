@@ -1,10 +1,6 @@
 import dash
 import dash_labs as dl
 import dash_bootstrap_components as dbc
-import os
-
-#os.system('find . | grep -E "(.ipynb_checkpoints$|\.pyc$|\.pyo$)" | xargs rm -rf')
-#os.rmdir('C:\Users\mjsoto\Documents\homicides\pages\.ipynb_checkpoints')
 
 app = dash.Dash(
     __name__, plugins=[dl.plugins.pages], external_stylesheets=[dbc.themes.MINTY]
@@ -19,7 +15,7 @@ navbar = dbc.NavbarSimple(
             if page.get("top_nav")
         ],
     ),
-    brand="HOMICIDIOS EN COLOMBIA",
+    brand="HOMICIDES IN COLOMBIA",
     color="primary",
     dark=True,
     className="mb-2",

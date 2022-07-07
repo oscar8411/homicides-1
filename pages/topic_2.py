@@ -15,6 +15,12 @@ def get_bar_chart1():
     #colors = np.random.rand(1,1000)
     #color_discrete_sequence=colors
     fig = px.bar(df_yearly, x='ano', y='cantidad', title='Homicidios por año', color='cantidad', color_continuous_scale=px.colors.sequential.Tealgrn)
+    fig.update_layout(
+        showlegend=False,
+        title_text='Homicides per year',
+        xaxis_title='Year',
+        yaxis_title='Homicides',
+        )
     fig.update_xaxes(tickangle=270, tickmode='linear')
     barChart1 = dcc.Graph(
         figure=fig,
@@ -23,6 +29,12 @@ def get_bar_chart1():
 
 def get_bar_chart2():
     fig = px.bar(df_monthly, x='mes', y='cantidad', title='Homicidios por mes', color='cantidad', color_continuous_scale=px.colors.sequential.Tealgrn)
+    fig.update_layout(
+        showlegend=False,
+        title_text='Homicides per month',
+        xaxis_title='Month',
+        yaxis_title='Homicides',
+        )
     fig.update_xaxes(tickangle=0, tickmode='linear')
     barChart2 = dcc.Graph(
         figure=fig,
@@ -30,8 +42,13 @@ def get_bar_chart2():
     return barChart2
 
 def get_bar_chart3():
-    
     fig = px.bar(df_daily, x='dia', y='cantidad', title='Homicidios por día', color='cantidad', color_continuous_scale=px.colors.sequential.Tealgrn)
+    fig.update_layout(
+        showlegend=False,
+        title_text='Homicides per day',
+        xaxis_title='Day',
+        yaxis_title='Homicides',
+        )
     fig.update_xaxes(tickangle=270, tickmode='linear', categoryarray=['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado','Domingo'])
     barChart3 = dcc.Graph(
         figure=fig,

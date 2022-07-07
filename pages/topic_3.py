@@ -7,11 +7,14 @@ from dash import dcc, html, Input, Output, callback
 from .side_bar import sidebar
 from app_dataframe import df
 
-register_page(__name__,name='homicides by characteristics')
+register_page(
+    __name__,
+    name='homicides by characteristics',
+    )
 
 def layout():
     return dbc.Row([dbc.Col(sidebar(), width=12),
-                    dbc.Col(html.P("Ver:"), width=12),
+                    dbc.Col(html.P("View:"), width=12),
                     dbc.Col(dcc.Dropdown(id='names',options=['genero', 'arma','edad_grupo','departamento'],value='genero',style={'width': '100%'}), width=12),
                     dbc.Col(dcc.Graph(id="graph_pie",style={'width': '100%', 'height': '60vh'}), width=12)])
    

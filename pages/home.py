@@ -1,8 +1,6 @@
-from ctypes import alignment
-from turtle import width
+import dash_bootstrap_components as dbc
 from dash import html
 from dash_labs.plugins import register_page
-import dash_bootstrap_components as dbc
 
 register_page(
     __name__,

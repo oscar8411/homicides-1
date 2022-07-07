@@ -17,7 +17,11 @@ register_page(
 def graficar():
     fig = go.Figure()
     fig.add_trace(go.Scatter(x=list(df_year_month.ano_mes), y=list(df_year_month.cantidad)))
-    fig.update_layout(title_text="Evolución homicidios en Colombia")
+    fig.update_layout(
+        title_text='Trend of homicides in Colombia',
+        xaxis_title="date",
+        yaxis_title="homicides",
+        )
     fig.update_layout(
         xaxis=dict(
             rangeselector=dict(
